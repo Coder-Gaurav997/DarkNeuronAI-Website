@@ -40,7 +40,7 @@
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s ease;
             max-width: 800px;
-            margin: 0 auto;
+            margin: 0 auto 40px;
         }
         
         .model-card:hover {
@@ -73,9 +73,47 @@
             color: var(--text-light);
         }
         
+        .features-toggle {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            padding: 12px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+        
+        .features-toggle:hover {
+            background: #f0f0f0;
+        }
+        
+        .features-toggle h4 {
+            margin: 0;
+            font-size: 1.1rem;
+            color: var(--accent);
+        }
+        
+        .toggle-icon {
+            transition: transform 0.3s ease;
+        }
+        
+        .features-toggle.active .toggle-icon {
+            transform: rotate(180deg);
+        }
+        
         .model-features {
             list-style: none;
             margin-bottom: 25px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease;
+        }
+        
+        .model-features.show {
+            max-height: 500px;
         }
         
         .model-features li {
@@ -203,7 +241,7 @@
         <div class="container">
             <h2>Available Models</h2>
             
-            <!-- Only showing the spamdex-v1 model as requested -->
+            <!-- Spamdex Model -->
             <div class="model-card">
                 <div class="model-header">
                     <div class="model-name">DarkNeuron Spamdex</div>
@@ -211,7 +249,13 @@
                 </div>
                 <div class="model-content">
                     <p class="model-description">Advanced spam detection model with industry-leading accuracy and real-time processing capabilities.</p>
-                    <ul class="model-features">
+                    
+                    <div class="features-toggle" id="spamdex-toggle">
+                        <h4>View Features</h4>
+                        <i class="fas fa-chevron-down toggle-icon"></i>
+                    </div>
+                    
+                    <ul class="model-features" id="spamdex-features">
                         <li>99.7% accuracy in spam detection</li>
                         <li>Real-time processing with minimal latency</li>
                         <li>Adaptive learning to counter evolving spam tactics</li>
@@ -219,9 +263,42 @@
                         <li>Customizable sensitivity settings</li>
                         <li>API integration for seamless implementation</li>
                     </ul>
+                    
                     <div class="model-actions">
                         <a href="https://huggingface.co/DarkNeuron-AI/darkneuron-spamdex-v1" target="_blank" class="model-btn primary">Try Demo</a>
                         <a href="https://github.com/DarkNeuron-AI/darkneuron-spamdex-v1" target="_blank" class="model-btn">See Code</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- HydraSense Model -->
+            <div class="model-card">
+                <div class="model-header">
+                    <div class="model-name">HydraSense</div>
+                    <div class="model-version">Version 1.2</div>
+                </div>
+                <div class="model-content">
+                    <p class="model-description">Multi-modal AI model for comprehensive threat detection and cybersecurity analysis across digital environments.</p>
+                    
+                    <div class="features-toggle" id="hydrasense-toggle">
+                        <h4>View Features</h4>
+                        <i class="fas fa-chevron-down toggle-icon"></i>
+                    </div>
+                    
+                    <ul class="model-features" id="hydrasense-features">
+                        <li>Multi-layered threat detection across network, application, and user behavior</li>
+                        <li>Real-time anomaly detection with 99.5% accuracy</li>
+                        <li>Adaptive learning to identify emerging cyber threats</li>
+                        <li>Automated incident response and mitigation recommendations</li>
+                        <li>Comprehensive security dashboard with threat visualization</li>
+                        <li>Integration with popular security tools and platforms</li>
+                        <li>Predictive analytics for proactive threat prevention</li>
+                        <li>Customizable alert system with severity levels</li>
+                    </ul>
+                    
+                    <div class="model-actions">
+                        <a href="https://huggingface.co/DarkNeuron-AI/hydrasense-v1" target="_blank" class="model-btn primary">Try Demo</a>
+                        <a href="https://github.com/DarkNeuron-AI/hydrasense-v1" target="_blank" class="model-btn">See Code</a>
                     </div>
                 </div>
             </div>
@@ -282,6 +359,50 @@
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script>
+        // Mobile Navigation Toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            hamburger.querySelector('i').classList.toggle('fa-bars');
+            hamburger.querySelector('i').classList.toggle('fa-times');
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                hamburger.querySelector('i').classList.add('fa-bars');
+                hamburger.querySelector('i').classList.remove('fa-times');
+            });
+        });
+
+        // Features dropdown functionality
+        document.getElementById('spamdex-toggle').addEventListener('click', function() {
+            const features = document.getElementById('spamdex-features');
+            this.classList.toggle('active');
+            features.classList.toggle('show');
+        });
+
+        document.getElementById('hydrasense-toggle').addEventListener('click', function() {
+            const features = document.getElementById('hydrasense-features');
+            this.classList.toggle('active');
+            features.classList.toggle('show');
+        });
+
+        // Header background change on scroll
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if(window.scrollY > 100) {
+                header.style.background = 'rgba(255, 255, 255, 0.95)';
+                header.style.backdropFilter = 'blur(10px)';
+            } else {
+                header.style.background = 'var(--primary)';
+                header.style.backdropFilter = 'none';
+            }
+        });
+    </script>
 </body>
-</html>
+                                    </html>
