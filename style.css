@@ -300,7 +300,7 @@ header {
 
 .hero-btns {
     display: flex;
-    gap: 50px;
+    gap: 20px;
     justify-content: center;
     flex-wrap: wrap;
     margin-top: 40px;
