@@ -5,9 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DarkNeuronAI | Advanced AI Solutions</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- Loading Animation -->
+    <div class="loading" id="loading">
+        <div class="loading-circle"></div>
+    </div>
+
+    <!-- Particle Background -->
+    <canvas class="particle-background" id="particles"></canvas>
+
     <!-- Header Section -->
     <header>
         <div class="container">
@@ -20,8 +31,8 @@
                     <li><a href="#home">Home</a></li>
                     <li><a href="#about">About</a></li>
                     <li><a href="#features">Features</a></li>
-                    <li><a href="#owner">Team</a></li>
-                    <li><a href="models.html" class="btn">Our Models</a></li>
+                    <li><a href="#owner">Leadership</a></li>
+                    <li><a href="models.html" class="btn">Explore Models</a></li>
                 </ul>
                 <div class="hamburger">
                     <i class="fas fa-bars"></i>
@@ -34,29 +45,29 @@
     <section class="hero" id="home">
         <div class="container">
             <div class="hero-content">
-                <h1>Revolutionizing AI with DarkNeuron Technology</h1>
-                <p>DarkNeuronAI is at the forefront of artificial intelligence innovation, developing cutting-edge solutions that transform industries and redefine what's possible with machine learning.</p>
+                <h1>Where Neural Networks Meet Infinite Potential</h1>
+                <p>DarkNeuronAI pioneers next-generation artificial intelligence, crafting intelligent systems that think, learn, and evolve. We're not just building AI—we're engineering the cognitive architecture of tomorrow.</p>
                 <div class="hero-btns">
-                    <a href="#features" class="btn">Explore Features</a>
-                    <a href="models.html" class="btn btn-outline">See Latest Models</a>
-                    <a href="#about" class="btn btn-outline">Learn More</a>
+                    <a href="#features" class="btn">Discover Capabilities</a>
+                    <a href="models.html" class="btn btn-outline">Explore Models</a>
+                    <a href="#about" class="btn btn-outline">Our Vision</a>
                 </div>
             </div>
         </div>
-        <div class="hero-image"></div>
     </section>
 
     <!-- About Section -->
     <section class="about" id="about">
         <div class="container">
-            <h2>About DarkNeuronAI</h2>
+            <h2 class="animate-on-scroll">The DarkNeuron Revolution</h2>
             <div class="about-content">
-                <div class="about-text">
-                    <p>DarkNeuronAI is a pioneering artificial intelligence company focused on developing advanced neural network solutions for complex business challenges. Our proprietary DarkNeuron technology represents a breakthrough in machine learning architecture.</p>
-                    <p>Founded in 2025, we've quickly grown from a small research team to an emerging leader with clients across finance, healthcare, and technology sectors. Our mission is to democratize advanced AI capabilities while maintaining the highest standards of security and ethical implementation.</p>
-                    <a href="#contact" class="btn">Contact Us</a>
+                <div class="about-text animate-on-scroll">
+                    <p>DarkNeuronAI stands at the convergence of neuroscience and artificial intelligence, where we engineer cognitive architectures that transcend conventional machine learning paradigms. Our proprietary neural frameworks aren't just algorithms—they're synthetic thought processes.</p>
+                    <p>We architect intelligence systems that perceive context, reason through complexity, and adapt in real-time. Unlike traditional AI that simply processes data, our models understand intent, recognize patterns at quantum scales, and generate insights with human-like intuition.</p>
+                    <p>Our technology powers enterprises across finance, healthcare, and autonomous systems, providing not just answers but wisdom—transforming raw data into strategic intelligence that drives innovation and creates competitive advantage.</p>
+                    <a href="#contact" class="btn">Join the Revolution</a>
                 </div>
-                <div class="about-image"></div>
+                <div class="about-image animate-on-scroll"></div>
             </div>
         </div>
     </section>
@@ -64,44 +75,44 @@
     <!-- Features Section -->
     <section class="features" id="features">
         <div class="container">
-            <h2>Why DarkNeuronAI?</h2>
+            <h2 class="animate-on-scroll">Why DarkNeuronAI?</h2>
             <div class="features-grid">
-                <div class="feature-card">
+                <div class="feature-card animate-on-scroll">
                     <div class="feature-icon">
                         <i class="fas fa-brain"></i>
                     </div>
                     <h3>Advanced Neural Architecture</h3>
                     <p>Our proprietary DarkNeuron technology enables neural networks to process information 5x faster than conventional models while using 40% less computational resources.</p>
                 </div>
-                <div class="feature-card">
+                <div class="feature-card animate-on-scroll">
                     <div class="feature-icon">
                         <i class="fas fa-shield-alt"></i>
                     </div>
                     <h3>Enterprise-Grade Security</h3>
                     <p>We implement military-grade encryption and privacy protocols to ensure your data remains secure throughout all AI processing operations.</p>
                 </div>
-                <div class="feature-card">
+                <div class="feature-card animate-on-scroll">
                     <div class="feature-icon">
                         <i class="fas fa-rocket"></i>
                     </div>
                     <h3>Rapid Deployment</h3>
                     <p>Our modular AI solutions can be integrated into existing systems in weeks, not months, with minimal disruption to your operations.</p>
                 </div>
-                <div class="feature-card">
+                <div class="feature-card animate-on-scroll">
                     <div class="feature-icon">
                         <i class="fas fa-chart-line"></i>
                     </div>
                     <h3>Continuous Learning</h3>
                     <p>Our systems continuously improve through adaptive learning algorithms, ensuring your AI capabilities grow alongside your business needs.</p>
                 </div>
-                <div class="feature-card">
+                <div class="feature-card animate-on-scroll">
                     <div class="feature-icon">
                         <i class="fas fa-cogs"></i>
                     </div>
                     <h3>Custom Solutions</h3>
                     <p>We don't believe in one-size-fits-all. Every DarkNeuronAI implementation is tailored to address your specific challenges and objectives.</p>
                 </div>
-                <div class="feature-card">
+                <div class="feature-card animate-on-scroll">
                     <div class="feature-icon">
                         <i class="fas fa-handshake"></i>
                     </div>
@@ -112,22 +123,44 @@
         </div>
     </section>
 
-    <!-- About Owner Section -->
+    <!-- Leadership Section -->
     <section class="owner" id="owner">
         <div class="container">
-            <h2>Our Leadership</h2>
-            <div class="owner-content">
-                <div class="owner-image"></div>
-                <div class="owner-text">
-                    <h2>Gaurav Pandey</h2>
-                    <h3>Founder & Chief AI Officer</h3>
-                    <p>At just 15 years old, Gaurav Pandey is the prodigious co-founder and technical visionary behind DarkNeuronAI. With 2 years of intensive experience in artificial intelligence research, Gaurav has developed our proprietary DarkNeuron architecture that sets new benchmarks in neural network efficiency.</p>
-                    <p>A self-taught programmer since age 12, Gaurav's exceptional talent for machine learning algorithms has positioned him as one of the youngest innovators in the AI industry. His groundbreaking work on adaptive neural networks demonstrates a maturity beyond his years.</p>
-                    <div class="social-links">
-                        <a href="https://x.com/DarkNeuron_AI" target="_blank"><i class="fab fa-twitter"></i></a>
-                        <a href="https://github.com/DarkNeuron-AI" target="_blank"><i class="fab fa-github"></i></a>
-                        <a href="https://huggingface.co/DarkNeuron-AI" target="_blank"><i class="fas fa-robot"></i></a>
-                        <a href="mailto:darkneuronai.official@gmail.com"><i class="fas fa-envelope"></i></a>
+            <h2 class="animate-on-scroll">Our Visionary Leadership</h2>
+            <div class="owner-grid">
+                <div class="owner-card animate-on-scroll">
+                    <div class="owner-image">
+                        <img src="https://images.pexels.com/photos/1839564/pexels-photo-1839564.jpeg" alt="Gaurav Pandey">
+                    </div>
+                    <div class="owner-text">
+                        <h2>Gaurav Pandey</h2>
+                        <h3>Founder & Chief AI Architect</h3>
+                        <p>At 15, Gaurav is the prodigious architect behind DarkNeuronAI's neural technology. A self-taught machine learning pioneer since age 12, his groundbreaking work on adaptive neural frameworks demonstrates a cognitive maturity that transcends his years. He conceptualized the DarkNeuron architecture after discovering novel patterns in neural network optimization that eluded established researchers.</p>
+                        <p>Gaurav's vision is to create AI systems that don't just compute, but truly understand—bridging the gap between artificial and human intelligence through biologically-inspired neural designs.</p>
+                        <div class="social-links">
+                            <a href="https://x.com/DarkNeuron_AI" target="_blank"><i class="fab fa-twitter"></i></a>
+                            <a href="https://github.com/DarkNeuron-AI" target="_blank"><i class="fab fa-github"></i></a>
+                            <a href="https://huggingface.co/DarkNeuron-AI" target="_blank"><i class="fas fa-robot"></i></a>
+                            <a href="mailto:darkneuronai.official@gmail.com"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="owner-card animate-on-scroll">
+                    <div class="owner-image">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Madara Uchiha">
+                    </div>
+                    <div class="owner-text">
+                        <h2>Madara Uchiha</h2>
+                        <h3>Co-founder & Chief UI Designer</h3>
+                        <p>Madara brings visionary design philosophy to DarkNeuronAI, crafting interfaces that transform complex AI operations into intuitive experiences. With a background in cognitive psychology and interaction design, he ensures our technology remains accessible while maintaining its sophisticated capabilities.</p>
+                        <p>His design principles focus on creating seamless bridges between human intuition and machine intelligence, developing UI systems that feel like natural extensions of thought rather than software tools.</p>
+                        <div class="social-links">
+                            <a href="https://x.com/DarkNeuron_AI" target="_blank"><i class="fab fa-twitter"></i></a>
+                            <a href="https://github.com/DarkNeuron-AI" target="_blank"><i class="fab fa-github"></i></a>
+                            <a href="https://huggingface.co/DarkNeuron-AI" target="_blank"><i class="fas fa-robot"></i></a>
+                            <a href="mailto:darkneuronai.official@gmail.com"><i class="fas fa-envelope"></i></a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -143,7 +176,7 @@
                         <div class="logo-img">DN</div>
                         <h2>DarkNeuronAI</h2>
                     </div>
-                    <p>Advanced AI Solutions for Tomorrow's Challenges</p>
+                    <p>Engineering the Cognitive Architecture of Tomorrow</p>
                 </div>
                 <div class="footer-links">
                     <div class="footer-nav">
@@ -152,12 +185,12 @@
                             <li><a href="#home">Home</a></li>
                             <li><a href="#about">About</a></li>
                             <li><a href="#features">Features</a></li>
-                            <li><a href="#owner">Team</a></li>
+                            <li><a href="#owner">Leadership</a></li>
                             <li><a href="models.html">Our Models</a></li>
                         </ul>
                     </div>
                     <div class="footer-contact">
-                        <h3>Contact</h3>
+                        <h3>Connect</h3>
                         <ul>
                             <li><i class="fas fa-envelope"></i> darkneuronai.official@gmail.com</li>
                             <li><i class="fab fa-github"></i> github.com/DarkNeuron-AI</li>
@@ -177,7 +210,7 @@
                 </div>
             </div>
             <div class="copyright">
-                <p>&copy; 2025 DarkNeuronAI. All rights reserved.</p>
+                <p>&copy; 2025 DarkNeuronAI. All rights reserved. | Pioneering the Future of Intelligence</p>
             </div>
         </div>
     </footer>
