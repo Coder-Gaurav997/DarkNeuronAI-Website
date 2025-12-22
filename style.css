@@ -181,13 +181,13 @@ header {
 
 /* Hero Section - FIXED FOR PERFECT CENTERING */
 .hero {
-    min-height: calc(100vh - 50px); /* Subtract header height */
+    min-height: calc(100vh - 30px); /* Subtract header height */
     display: flex;
     align-items: center;
     justify-content: center;
     background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
     text-align: center;
-    margin-top: 50px; /* Push it down below the fixed header */
+    margin-top: 30px; /* Push it down below the fixed header */
 }
 
 .hero .container {
@@ -596,3 +596,4 @@ header {
     margin: 0 !important;
     padding: 0 !important;
 }
+
