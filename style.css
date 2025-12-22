@@ -596,15 +596,3 @@ header {
     margin: 0 !important;
     padding: 0 !important;
 }
-
-/* Fix hero section positioning */
-.hero {
-    margin-top: 70px !important;
-    min-height: calc(100vh - 70px) !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-}
-
-
-
