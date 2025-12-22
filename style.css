@@ -579,3 +579,29 @@ footer {
     }
 }
 
+
+/* ===== FIX FOR HEADER POSITION ===== */
+/* Add this at the END of your style.css file */
+
+/* Reset body and html */
+html, body {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* Fix header position */
+header {
+    top: 0 !important;
+    position: fixed !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* Fix hero section positioning */
+.hero {
+    margin-top: 70px !important;
+    min-height: calc(100vh - 70px) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
