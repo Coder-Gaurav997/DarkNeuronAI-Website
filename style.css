@@ -179,7 +179,7 @@ header {
     cursor: pointer;
 }
 
-/* Update the hero section styles */
+/* Hero Section - FIXED FOR CENTER ALIGNMENT */
 .hero {
     min-height: 100vh;
     display: flex;
@@ -189,19 +189,27 @@ header {
     position: relative;
     overflow: hidden;
     text-align: center;
-    padding-top: 80px; /* This accounts for the fixed header */
-    padding-bottom: 40px; /* Added some bottom padding too */
+    padding: 0 20px;
 }
 
-/* Remove or adjust the height property */
-.hero {
-    height: auto; /* Change from height: 100vh to min-height: 100vh */
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: transparent;
+    pointer-events: none;
 }
 
 .hero-content {
     width: 100%;
     max-width: 900px;
     z-index: 2;
+    position: relative;
+    padding-top: 80px; /* Account for fixed header */
+    padding-bottom: 40px;
 }
 
 .hero h1 {
@@ -505,17 +513,20 @@ footer {
     }
     
     .hero {
-        height: auto;
-        padding: 150px 0 100px;
+        padding: 0 15px;
     }
     
     .hero-content {
-        width: 100%;
-        text-align: center;
+        padding-top: 60px;
+        padding-bottom: 30px;
+    }
+    
+    .hero h1 {
+        font-size: 2.5rem;
     }
     
     .hero p {
-        max-width: 100%;
+        font-size: 1.1rem;
     }
     
     .hero-btns {
@@ -568,5 +579,12 @@ footer {
     .team-card {
         padding: 30px 20px;
     }
+    
+    .hero h1 {
+        font-size: 2rem;
+    }
+    
+    .hero p {
+        font-size: 1rem;
+    }
 }
-
