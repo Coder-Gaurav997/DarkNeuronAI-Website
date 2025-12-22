@@ -179,9 +179,9 @@ header {
     cursor: pointer;
 }
 
-/* Hero Section */
+/* Update the hero section styles */
 .hero {
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -189,6 +189,13 @@ header {
     position: relative;
     overflow: hidden;
     text-align: center;
+    padding-top: 80px; /* This accounts for the fixed header */
+    padding-bottom: 40px; /* Added some bottom padding too */
+}
+
+/* Remove or adjust the height property */
+.hero {
+    height: auto; /* Change from height: 100vh to min-height: 100vh */
 }
 
 .hero-content {
@@ -562,3 +569,4 @@ footer {
         padding: 30px 20px;
     }
 }
+
