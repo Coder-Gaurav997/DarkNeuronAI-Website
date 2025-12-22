@@ -179,37 +179,28 @@ header {
     cursor: pointer;
 }
 
-/* Hero Section - FIXED FOR CENTER ALIGNMENT */
+/* Hero Section - FIXED FOR PERFECT CENTERING */
 .hero {
-    min-height: 100vh;
+    min-height: calc(100vh - 80px); /* Subtract header height */
     display: flex;
     align-items: center;
     justify-content: center;
     background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-    position: relative;
-    overflow: hidden;
     text-align: center;
-    padding: 0 20px;
+    margin-top: 80px; /* Push it down below the fixed header */
 }
 
-.hero::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: transparent;
-    pointer-events: none;
+.hero .container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100%;
 }
 
 .hero-content {
     width: 100%;
     max-width: 900px;
-    z-index: 2;
-    position: relative;
-    padding-top: 80px; /* Account for fixed header */
-    padding-bottom: 40px;
+    margin: 0 auto;
 }
 
 .hero h1 {
@@ -231,7 +222,6 @@ header {
     gap: 15px;
     flex-wrap: wrap;
 }
-
 /* About Section */
 .about {
     background: var(--secondary);
@@ -588,3 +578,4 @@ footer {
         font-size: 1rem;
     }
 }
+
