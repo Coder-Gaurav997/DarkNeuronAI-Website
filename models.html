@@ -22,7 +22,7 @@
         }
         
         .models-hero p {
-            color: white; /* Changed to pure white */
+            color: white;
             font-size: 1.2rem;
             max-width: 700px;
             margin: 0 auto 30px;
@@ -177,7 +177,7 @@
             align-items: center;
             gap: 8px;
             margin-top: 30px;
-            color: white; /* Changed to pure white */
+            color: white;
             text-decoration: none;
             font-weight: 600;
             transition: all 0.3s ease;
@@ -240,6 +240,36 @@
     <section class="models-section">
         <div class="container">
             <h2>Available Models</h2>
+            
+            <!-- DarkNeuron Chat Model -->
+            <div class="model-card">
+                <div class="model-header">
+                    <div class="model-name">DarkNeuron Chat</div>
+                    <div class="model-version">Version 1.1</div>
+                </div>
+                <div class="model-content">
+                    <p class="model-description">Advanced conversational AI model with human-like response generation and contextual understanding.</p>
+                    
+                    <div class="features-toggle" id="chat-toggle">
+                        <h4>View Features</h4>
+                        <i class="fas fa-chevron-down toggle-icon"></i>
+                    </div>
+                    
+                    <ul class="model-features" id="chat-features">
+                        <li>Advanced GPT-2 fine-tuning for natural conversations</li>
+                        <li>Trained on large corpus of diverse text data</li>
+                        <li>Fast response generation with low latency</li>
+                        <li>Contextual understanding across multiple turns</li>
+                        <li>Customizable personality and response styles</li>
+                        <li>Supports multiple languages and domains</li>
+                    </ul>
+                    
+                    <div class="model-actions">
+                        <a href="https://huggingface.co/DarkNeuron-AI/darkneuron-chat-v1.1" target="_blank" class="model-btn primary">Try Demo</a>
+                        <a href="https://github.com/DarkNeuron-AI/darkneuron-chat-v1.1" target="_blank" class="model-btn">See Code</a>
+                    </div>
+                </div>
+            </div>
             
             <!-- Spamdex Model -->
             <div class="model-card">
@@ -376,6 +406,12 @@
         });
 
         // Features dropdown functionality
+        document.getElementById('chat-toggle').addEventListener('click', function() {
+            const features = document.getElementById('chat-features');
+            this.classList.toggle('active');
+            features.classList.toggle('show');
+        });
+
         document.getElementById('spamdex-toggle').addEventListener('click', function() {
             const features = document.getElementById('spamdex-features');
             this.classList.toggle('active');
@@ -401,4 +437,4 @@
         });
     </script>
 </body>
-                                    </html>
+</html>
