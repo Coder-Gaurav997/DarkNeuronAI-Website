@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our AI Models | DarkNeuronAI</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Additional styles for models page */
+        .models-hero {
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
+            color: white;
+            padding: 150px 0 100px;
+            text-align: center;
+        }
+        
+        .models-hero h1 {
+            color: white;
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .models-hero p {
+            color: white; /* Changed to pure white */
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        
+        .models-section {
+            padding: 80px 0;
+            background: var(--secondary);
+        }
+        
+        .model-card {
+            background: var(--primary);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            max-width: 800px;
+            margin: 0 auto 40px;
+        }
+        
+        .model-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .model-header {
+            background: linear-gradient(to right, var(--accent), var(--accent-light));
+            color: white;
+            padding: 20px;
+        }
+        
+        .model-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+        
+        .model-version {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        .model-content {
+            padding: 25px;
+        }
+        
+        .model-description {
+            margin-bottom: 20px;
+            color: var(--text-light);
+        }
+        
+        .features-toggle {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            padding: 12px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+        
+        .features-toggle:hover {
+            background: #f0f0f0;
+        }
+        
+        .features-toggle h4 {
+            margin: 0;
+            font-size: 1.1rem;
+            color: var(--accent);
+        }
+        
+        .toggle-icon {
+            transition: transform 0.3s ease;
+        }
+        
+        .features-toggle.active .toggle-icon {
+            transform: rotate(180deg);
+        }
+        
+        .model-features {
+            list-style: none;
+            margin-bottom: 25px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease;
+        }
+        
+        .model-features.show {
+            max-height: 500px;
+        }
+        
+        .model-features li {
+            margin-bottom: 10px;
+            position: relative;
+            padding-left: 25px;
+        }
+        
+        .model-features li:before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: bold;
+        }
+        
+        .model-actions {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .model-btn {
+            flex: 1;
+            text-align: center;
+            padding: 10px 15px;
+            background: var(--secondary);
+            color: var(--accent);
+            border: 1px solid var(--border);
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .model-btn.primary {
+            background: var(--accent);
+            color: white;
+        }
+        
+        .model-btn:hover {
+            background: var(--accent-light);
+            color: white;
+        }
+        
+        .coming-soon {
+            text-align: center;
+            margin-top: 60px;
+            padding: 30px;
+            background: var(--primary);
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .coming-soon h3 {
+            color: var(--accent);
+            margin-bottom: 10px;
+        }
+        
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 30px;
+            color: white; /* Changed to pure white */
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 2px solid white;
+            padding: 10px 20px;
+            border-radius: 30px;
+        }
+        
+        .back-btn:hover {
+            gap: 12px;
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        @media (max-width: 768px) {
+            .models-hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .model-actions {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <div class="logo-img">DN</div>
+                    <h1>Dark<span>Neuron</span>AI</h1>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#about">About</a></li>
+                    <li><a href="index.html#features">Features</a></li>
+                    <li><a href="index.html#owner">Team</a></li>
+                    <li><a href="models.html" class="btn">Our Models</a></li>
+                </ul>
+                <div class="hamburger">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Models Hero Section -->
+    <section class="models-hero">
+        <div class="container">
+            <h1>Our AI Models</h1>
+            <p>Explore our cutting-edge AI models designed to solve complex problems and deliver exceptional performance across various domains.</p>
+            <a href="index.html" class="back-btn">
+                <i class="fas fa-arrow-left"></i> Back to Home
+            </a>
+        </div>
+    </section>
+
+    <!-- Models Section -->
+    <section class="models-section">
+        <div class="container">
+            <h2>Available Models</h2>
+            
+            <!-- Spamdex Model -->
+            <div class="model-card">
+                <div class="model-header">
+                    <div class="model-name">DarkNeuron Spamdex</div>
+                    <div class="model-version">Version 1.0</div>
+                </div>
+                <div class="model-content">
+                    <p class="model-description">Advanced spam detection model with industry-leading accuracy and real-time processing capabilities.</p>
+                    
+                    <div class="features-toggle" id="spamdex-toggle">
+                        <h4>View Features</h4>
+                        <i class="fas fa-chevron-down toggle-icon"></i>
+                    </div>
+                    
+                    <ul class="model-features" id="spamdex-features">
+                        <li>99.7% accuracy in spam detection</li>
+                        <li>Real-time processing with minimal latency</li>
+                        <li>Adaptive learning to counter evolving spam tactics</li>
+                        <li>Multilingual support for global deployment</li>
+                        <li>Customizable sensitivity settings</li>
+                    </ul>
+                    
+                    <div class="model-actions">
+                        <a href="https://huggingface.co/DarkNeuron-AI/darkneuron-spamdex-v1" target="_blank" class="model-btn primary">Try Demo</a>
+                        <a href="https://github.com/DarkNeuron-AI/darkneuron-spamdex-v1" target="_blank" class="model-btn">See Code</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- HydraSense Model -->
+            <div class="model-card">
+                <div class="model-header">
+                    <div class="model-name">DarkNeuron HydraSense</div>
+                    <div class="model-version">Version 1.0</div>
+                </div>
+                <div class="model-content">
+                    <p class="model-description">Advance AI model for comprehensive water potability classification as 0 or 1.</p>
+                    
+                    <div class="features-toggle" id="hydrasense-toggle">
+                        <h4>View Features</h4>
+                        <i class="fas fa-chevron-down toggle-icon"></i>
+                    </div>
+                    
+                    <ul class="model-features" id="hydrasense-features">
+                        <li>Multi-featured AI model for water potability</li>
+                        <li>Real-time water potability detection with 76.5% accuracy</li>
+                        <li>Very fast and efficient, runs easily on standard PCs</li>
+                        <li>Can be used with reallife applications</li>
+                        <li>Complete pipeline for automated scaling</li>
+                    </ul>
+                    
+                    <div class="model-actions">
+                        <a href="https://huggingface.co/DarkNeuron-AI/darkneuron-hydrasense-v1" target="_blank" class="model-btn primary">Try Demo</a>
+                        <a href="https://github.com/DarkNeuron-AI/darkneuron-hydrasense-v1" target="_blank" class="model-btn">See Code</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="coming-soon">
+                <h3>More Models Coming Soon</h3>
+                <p>We're continuously developing new AI models to address emerging challenges and opportunities.</p>
+                <p>Stay tuned for updates on our latest releases!</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                    <div class="footer-logo">
+                        <div class="logo-img">DN</div>
+                        <h2>DarkNeuronAI</h2>
+                    </div>
+                    <p>Advanced AI Solutions for Tomorrow's Challenges</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-nav">
+                        <h3>Navigation</h3>
+                        <ul>
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="index.html#about">About</a></li>
+                            <li><a href="index.html#features">Features</a></li>
+                            <li><a href="index.html#owner">Team</a></li>
+                            <li><a href="models.html">Our Models</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-contact">
+                        <h3>Contact</h3>
+                        <ul>
+                            <li><i class="fas fa-envelope"></i> darkneuronai.official@gmail.com</li>
+                            <li><i class="fab fa-github"></i> github.com/DarkNeuron-AI</li>
+                            <li><i class="fab fa-twitter"></i> x.com/DarkNeuron_AI</li>
+                            <li><i class="fas fa-robot"></i> huggingface.co/DarkNeuron-AI</li>
+                        </ul>
+                    </div>
+                    <div class="footer-services">
+                        <h3>Services</h3>
+                        <ul>
+                            <li><a href="#">AI Consulting</a></li>
+                            <li><a href="#">Custom Solutions</a></li>
+                            <li><a href="#">AI Integration</a></li>
+                            <li><a href="#">Training & Support</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 DarkNeuronAI. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Navigation Toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            hamburger.querySelector('i').classList.toggle('fa-bars');
+            hamburger.querySelector('i').classList.toggle('fa-times');
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                hamburger.querySelector('i').classList.add('fa-bars');
+                hamburger.querySelector('i').classList.remove('fa-times');
+            });
+        });
+
+        // Features dropdown functionality
+        document.getElementById('spamdex-toggle').addEventListener('click', function() {
+            const features = document.getElementById('spamdex-features');
+            this.classList.toggle('active');
+            features.classList.toggle('show');
+        });
+
+        document.getElementById('hydrasense-toggle').addEventListener('click', function() {
+            const features = document.getElementById('hydrasense-features');
+            this.classList.toggle('active');
+            features.classList.toggle('show');
+        });
+
+        // Header background change on scroll
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if(window.scrollY > 100) {
+                header.style.background = 'rgba(255, 255, 255, 0.95)';
+                header.style.backdropFilter = 'blur(10px)';
+            } else {
+                header.style.background = 'var(--primary)';
+                header.style.backdropFilter = 'none';
+            }
+        });
+    </script>
+</body>
+                                    </html>
