@@ -6,30 +6,20 @@
     <title>Our AI Models | DarkNeuronAI</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* --- RESTORED CORE STYLES & COLORS --- */
+        /* Restoring your original CSS variables and theme */
         :root {
-            --primary: #0a0b10;        /* Deep Dark Background */
-            --secondary: #161b22;      /* Card Background */
-            --accent: #0070f3;         /* Electric Blue */
-            --accent-light: #00dfd8;   /* Cyan Glow */
-            --text: #ffffff;           /* Pure White Text */
-            --text-light: #b1b1b1;     /* Muted Grey Text */
-            --border: #30363d;         /* Subtle Border */
-            --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            --primary: #ffffff;
+            --secondary: #f4f7f6;
+            --accent: #0f172a;
+            --accent-light: #334155;
+            --text-light: #64748b;
+            --border: #e2e8f0;
         }
 
         body {
-            background-color: var(--primary);
-            color: var(--text);
-            line-height: 1.6;
-            overflow-x: hidden;
+            margin: 0;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            color: #1e293b;
         }
 
         .container {
@@ -38,16 +28,14 @@
             padding: 0 20px;
         }
 
-        /* --- HEADER --- */
+        /* Header Styles */
         header {
+            background: var(--primary);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
-            background: rgba(10, 11, 16, 0.8);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid var(--border);
-            transition: 0.3s;
         }
 
         .navbar {
@@ -60,305 +48,198 @@
         .logo {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 10px;
         }
 
         .logo-img {
-            background: linear-gradient(135deg, var(--accent), var(--accent-light));
+            background: var(--accent);
             color: white;
-            padding: 6px 12px;
-            border-radius: 8px;
-            font-weight: 800;
-            box-shadow: 0 0 15px rgba(0, 112, 243, 0.4);
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-weight: bold;
         }
 
         .logo h1 {
-            font-size: 1.4rem;
-            letter-spacing: -0.5px;
+            font-size: 1.5rem;
+            margin: 0;
         }
 
-        .logo h1 span {
-            background: linear-gradient(to right, var(--accent), var(--accent-light));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
+        .logo h1 span { color: var(--text-light); }
 
         .nav-links {
             display: flex;
             list-style: none;
-            gap: 25px;
+            gap: 20px;
             align-items: center;
         }
 
         .nav-links a {
             text-decoration: none;
-            color: var(--text-light);
+            color: #334155;
             font-weight: 500;
-            transition: 0.3s;
-        }
-
-        .nav-links a:hover {
-            color: var(--accent-light);
         }
 
         .btn {
-            background: linear-gradient(to right, var(--accent), var(--accent-light));
+            background: var(--accent);
             color: white !important;
-            padding: 10px 22px;
-            border-radius: 30px;
-            font-weight: 600;
+            padding: 8px 20px;
+            border-radius: 5px;
         }
 
-        .hamburger {
-            display: none;
-            color: white;
-            font-size: 1.5rem;
-        }
-
-        /* --- HERO --- */
+        /* Hero Section */
         .models-hero {
-            background: radial-gradient(circle at top right, #1a1f35, var(--primary));
-            padding: 180px 0 100px;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
+            color: white;
+            padding: 150px 0 100px;
             text-align: center;
-            border-bottom: 1px solid var(--border);
         }
         
         .models-hero h1 {
-            font-size: 4rem;
+            color: white;
+            font-size: 3.5rem;
             margin-bottom: 20px;
-            background: linear-gradient(to right, #fff, #888);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
         }
         
         .models-hero p {
-            color: var(--text-light);
+            color: white;
             font-size: 1.2rem;
-            max-width: 650px;
-            margin: 0 auto 40px;
+            max-width: 700px;
+            margin: 0 auto 30px;
         }
-        
+
         .back-btn {
             display: inline-flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
             color: white;
             text-decoration: none;
-            border: 1px solid var(--border);
-            padding: 12px 25px;
-            border-radius: 50px;
+            font-weight: 600;
+            border: 2px solid white;
+            padding: 10px 20px;
+            border-radius: 30px;
             transition: 0.3s;
         }
 
-        .back-btn:hover {
-            background: rgba(255,255,255,0.05);
-            border-color: var(--accent);
-        }
-
-        /* --- MODELS SECTION --- */
+        /* Model Cards */
         .models-section {
-            padding: 100px 0;
-            background: var(--primary);
-        }
-
-        .models-section h2 {
-            text-align: center;
-            margin-bottom: 60px;
-            font-size: 2.5rem;
+            padding: 80px 0;
+            background: var(--secondary);
         }
         
         .model-card {
-            background: var(--secondary);
-            border-radius: 16px;
+            background: var(--primary);
+            border-radius: 10px;
             overflow: hidden;
-            border: 1px solid var(--border);
-            box-shadow: var(--card-shadow);
-            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            max-width: 850px;
-            margin: 0 auto 50px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            max-width: 800px;
+            margin: 0 auto 40px;
         }
         
-        .model-card:hover {
-            transform: translateY(-10px);
-            border-color: var(--accent);
-            box-shadow: 0 20px 40px rgba(0, 112, 243, 0.15);
-        }
+        .model-card:hover { transform: translateY(-10px); }
         
         .model-header {
-            background: linear-gradient(to right, #1e2631, #161b22);
-            padding: 25px 30px;
-            border-bottom: 1px solid var(--border);
-        }
-        
-        .model-name {
-            font-size: 1.8rem;
-            font-weight: 700;
+            background: linear-gradient(to right, var(--accent), var(--accent-light));
             color: white;
+            padding: 20px;
         }
         
-        .model-version {
-            display: inline-block;
-            background: rgba(0, 112, 243, 0.2);
-            color: var(--accent-light);
-            padding: 2px 10px;
-            border-radius: 4px;
-            font-size: 0.8rem;
-            margin-top: 5px;
-            text-transform: uppercase;
-            font-weight: bold;
-        }
-        
-        .model-content {
-            padding: 35px;
-        }
-        
-        .model-description {
-            margin-bottom: 25px;
-            color: var(--text-light);
-            font-size: 1.1rem;
-        }
+        .model-name { font-size: 1.5rem; font-weight: 700; margin-bottom: 5px; }
+        .model-version { font-size: 0.9rem; opacity: 0.8; }
+        .model-content { padding: 25px; }
+        .model-description { margin-bottom: 20px; color: var(--text-light); }
         
         .features-toggle {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            background: rgba(255,255,255,0.03);
+            background: var(--secondary);
             border: 1px solid var(--border);
-            padding: 15px 20px;
-            border-radius: 12px;
+            padding: 12px 15px;
+            border-radius: 5px;
             cursor: pointer;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
         }
         
-        .features-toggle h4 {
-            color: var(--accent-light);
-        }
+        .features-toggle h4 { margin: 0; color: var(--accent); }
         
         .model-features {
             list-style: none;
+            margin-bottom: 25px;
             max-height: 0;
             overflow: hidden;
-            transition: 0.5s ease-out;
+            transition: max-height 0.5s ease;
         }
         
-        .model-features.show {
-            max-height: 600px;
-            margin-bottom: 30px;
-        }
+        .model-features.show { max-height: 500px; }
         
         .model-features li {
-            margin-bottom: 12px;
-            padding-left: 30px;
+            margin-bottom: 10px;
             position: relative;
-            color: var(--text-light);
+            padding-left: 25px;
         }
         
         .model-features li:before {
-            content: '→';
+            content: '✓';
             position: absolute;
             left: 0;
-            color: var(--accent-light);
+            color: var(--accent);
+            font-weight: bold;
         }
         
-        .model-actions {
-            display: flex;
-            gap: 15px;
-        }
+        .model-actions { display: flex; gap: 10px; }
         
         .model-btn {
             flex: 1;
             text-align: center;
-            padding: 14px;
-            border-radius: 10px;
+            padding: 10px 15px;
+            background: var(--secondary);
+            color: var(--accent);
+            border: 1px solid var(--border);
+            border-radius: 5px;
             text-decoration: none;
             font-weight: 600;
-            transition: 0.3s;
-            border: 1px solid var(--border);
-            color: white;
         }
         
-        .model-btn.primary {
-            background: var(--accent);
-            border: none;
-        }
+        .model-btn.primary { background: var(--accent); color: white; }
 
-        .model-btn.primary:hover {
-            background: #0056b3;
-            box-shadow: 0 0 20px rgba(0, 112, 243, 0.4);
-        }
-
-        .model-btn:not(.primary):hover {
-            background: rgba(255,255,255,0.05);
-            border-color: var(--text-light);
-        }
-        
-        /* --- FOOTER --- */
+        /* Footer */
         footer {
-            background: #0d1117;
-            padding: 80px 0 30px;
-            border-top: 1px solid var(--border);
+            background: #1e293b;
+            color: white;
+            padding: 60px 0 20px;
         }
 
         .footer-content {
             display: grid;
-            grid-template-columns: 1.5fr 3fr;
-            gap: 50px;
-            margin-bottom: 50px;
+            grid-template-columns: 1fr 2fr;
+            gap: 40px;
+            margin-bottom: 40px;
         }
 
         .footer-links {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
         }
 
-        .footer-links h3 {
-            margin-bottom: 20px;
-            color: white;
-        }
-
-        .footer-links ul {
-            list-style: none;
-        }
-
+        .footer-links h3 { margin-bottom: 20px; font-size: 1.1rem; }
+        .footer-links ul { list-style: none; padding: 0; }
         .footer-links li { margin-bottom: 10px; }
+        .footer-links a { color: #cbd5e1; text-decoration: none; }
+        .copyright { text-align: center; border-top: 1px solid #334155; padding-top: 20px; color: #94a3b8; }
 
-        .footer-links a {
-            color: var(--text-light);
-            text-decoration: none;
-            transition: 0.3s;
-        }
+        .hamburger { display: none; cursor: pointer; }
 
-        .footer-links a:hover { color: var(--accent-light); }
-
-        .copyright {
-            text-align: center;
-            color: #484f58;
-            border-top: 1px solid var(--border);
-            padding-top: 30px;
-        }
-
-        /* --- RESPONSIVE --- */
         @media (max-width: 768px) {
-            .models-hero h1 { font-size: 2.8rem; }
-            .footer-content { grid-template-columns: 1fr; }
-            .footer-links { grid-template-columns: 1fr; }
-            .hamburger { display: block; }
-            .nav-links {
-                display: none;
-                position: absolute;
-                top: 100%; left: 0; width: 100%;
-                background: var(--secondary);
-                flex-direction: column;
-                padding: 30px;
-            }
-            .nav-links.active { display: flex; }
+            .models-hero h1 { font-size: 2.5rem; }
             .model-actions { flex-direction: column; }
+            .footer-content { grid-template-columns: 1fr; }
+            .hamburger { display: block; }
+            .nav-links { display: none; }
         }
     </style>
 </head>
 <body>
-
     <header>
         <div class="container">
             <nav class="navbar">
@@ -380,36 +261,36 @@
     <section class="models-hero">
         <div class="container">
             <h1>Our AI Models</h1>
-            <p>High-performance neural architectures engineered for the next generation of intelligent applications.</p>
+            <p>Explore our cutting-edge AI models designed to solve complex problems and deliver exceptional performance across various domains.</p>
             <a href="index.html" class="back-btn"><i class="fas fa-arrow-left"></i> Back to Home</a>
         </div>
     </section>
 
     <section class="models-section">
         <div class="container">
+            <h2>Available Models</h2>
             
             <div class="model-card">
                 <div class="model-header">
                     <div class="model-name">DarkNeuron Humour LLM</div>
-                    <div class="model-version">v1.1 | 0.5B Instruct</div>
+                    <div class="model-version">Version 1.1</div>
                 </div>
                 <div class="model-content">
-                    <p class="model-description">A specialized light-weight language model optimized for personality-driven interactions, creative wit, and engaging educational content.</p>
+                    <p class="model-description">A specialized language model designed for witty, engaging, and high-quality humorous response generation.</p>
                     <div class="features-toggle" id="humour-toggle">
-                        <h4>Technical Specifications</h4>
+                        <h4>View Features</h4>
                         <i class="fas fa-chevron-down toggle-icon"></i>
                     </div>
                     <ul class="model-features" id="humour-features">
-                        <li>Ultra-fast 0.5B parameter architecture for edge deployment</li>
-                        <li>Fine-tuned on high-quality datasets for human-like wit</li>
-                        <li>Optimized for chatbots, gaming NPCs, and creative assistance</li>
-                        <li>Low-VRAM footprint (runs easily on 4GB GPUs)</li>
-                        <li>Nuanced understanding of wordplay, puns, and sarcasm</li>
-                        <li>RLHF-aligned for safe yet engaging personality traits</li>
+                        <li>Fast and efficient performance</li>
+                        <li>Fine-tuned on high quality dataset</li>
+                        <li>Best for chatbots, education, and creative writing</li>
+                        <li>Nuanced understanding of sarcasm and wit</li>
+                        <li>Low latency response generation</li>
                     </ul>
                     <div class="model-actions">
-                        <a href="https://huggingface.co/DarkNeuron-AI/dnai-humour-0.5B-instruct" target="_blank" class="model-btn primary">Hugging Face</a>
-                        <a href="https://github.com/DarkNeuron-AI/dnai-humour-0.5B-instruct" target="_blank" class="model-btn">GitHub Repository</a>
+                        <a href="https://huggingface.co/DarkNeuron-AI/dnai-humour-0.5B-instruct" target="_blank" class="model-btn primary">Try Demo</a>
+                        <a href="https://github.com/DarkNeuron-AI/dnai-humour-0.5B-instruct" target="_blank" class="model-btn">See Code</a>
                     </div>
                 </div>
             </div>
@@ -417,23 +298,22 @@
             <div class="model-card">
                 <div class="model-header">
                     <div class="model-name">DarkNeuron Chat</div>
-                    <div class="model-version">v1.1</div>
+                    <div class="model-version">Version 1.1</div>
                 </div>
                 <div class="model-content">
-                    <p class="model-description">Our flagship conversational engine designed for natural, multi-turn dialogue and complex reasoning.</p>
+                    <p class="model-description">Advanced conversational AI model with human-like response generation and contextual understanding.</p>
                     <div class="features-toggle" id="chat-toggle">
-                        <h4>Technical Specifications</h4>
+                        <h4>View Features</h4>
                         <i class="fas fa-chevron-down toggle-icon"></i>
                     </div>
                     <ul class="model-features" id="chat-features">
-                        <li>Advanced context window for long-form memory</li>
-                        <li>Trained on diverse, multi-lingual text corpora</li>
-                        <li>Sub-second inference latency</li>
-                        <li>Contextual understanding across 10+ conversation turns</li>
+                        <li>Advanced GPT-2 fine-tuning for natural conversations</li>
+                        <li>Contextual understanding across multiple turns</li>
+                        <li>Supports multiple languages and domains</li>
                     </ul>
                     <div class="model-actions">
                         <a href="https://huggingface.co/DarkNeuron-AI/darkneuron-chat-v1.1" target="_blank" class="model-btn primary">Try Demo</a>
-                        <a href="https://github.com/DarkNeuron-AI/darkneuron-chat-v1.1" target="_blank" class="model-btn">Source Code</a>
+                        <a href="https://github.com/DarkNeuron-AI/darkneuron-chat-v1.1" target="_blank" class="model-btn">See Code</a>
                     </div>
                 </div>
             </div>
@@ -441,26 +321,24 @@
             <div class="model-card">
                 <div class="model-header">
                     <div class="model-name">DarkNeuron Spamdex</div>
-                    <div class="model-version">v1.0</div>
+                    <div class="model-version">Version 1.0</div>
                 </div>
                 <div class="model-content">
-                    <p class="model-description">Industry-leading classification model for filtering malicious content and automated spam.</p>
+                    <p class="model-description">Advanced spam detection model with industry-leading accuracy and real-time processing.</p>
                     <div class="features-toggle" id="spamdex-toggle">
-                        <h4>Technical Specifications</h4>
+                        <h4>View Features</h4>
                         <i class="fas fa-chevron-down toggle-icon"></i>
                     </div>
                     <ul class="model-features" id="spamdex-features">
-                        <li>99.7% accuracy on benchmark spam datasets</li>
-                        <li>Real-time API processing (<10ms)</li>
-                        <li>Adaptive learning for evolving phishing tactics</li>
+                        <li>99.7% accuracy in spam detection</li>
+                        <li>Adaptive learning to counter evolving spam tactics</li>
                     </ul>
                     <div class="model-actions">
                         <a href="https://huggingface.co/DarkNeuron-AI/darkneuron-spamdex-v1" target="_blank" class="model-btn primary">Try Demo</a>
-                        <a href="https://github.com/DarkNeuron-AI/darkneuron-spamdex-v1" target="_blank" class="model-btn">Source Code</a>
+                        <a href="https://github.com/DarkNeuron-AI/darkneuron-spamdex-v1" target="_blank" class="model-btn">See Code</a>
                     </div>
                 </div>
             </div>
-
         </div>
     </section>
 
@@ -472,53 +350,51 @@
                         <div class="logo-img">DN</div>
                         <h2>DarkNeuronAI</h2>
                     </div>
-                    <p>Building the future of neural intelligence.</p>
+                    <p>Advanced AI Solutions for Tomorrow's Challenges</p>
                 </div>
                 <div class="footer-links">
                     <div>
-                        <h3>Resources</h3>
+                        <h3>Navigation</h3>
                         <ul>
-                            <li><a href="#">Documentation</a></li>
-                            <li><a href="#">API Access</a></li>
-                            <li><a href="#">Models Hub</a></li>
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="models.html">Our Models</a></li>
                         </ul>
                     </div>
                     <div>
-                        <h3>Company</h3>
+                        <h3>Contact</h3>
                         <ul>
-                            <li><a href="#">About Us</a></li>
-                            <li><a href="#">Github</a></li>
-                            <li><a href="#">Twitter</a></li>
+                            <li>darkneuronai.official@gmail.com</li>
                         </ul>
                     </div>
                 </div>
             </div>
-            <p class="copyright">&copy; 2025 DarkNeuronAI. All rights reserved.</p>
+            <div class="copyright">
+                <p>&copy; 2025 DarkNeuronAI. All rights reserved.</p>
+            </div>
         </div>
     </footer>
 
     <script>
-        // Toggle Mobile Menu
-        const menuBtn = document.querySelector('.hamburger');
-        const nav = document.querySelector('.nav-links');
-        menuBtn.addEventListener('click', () => nav.classList.toggle('active'));
-
-        // Logic for dropdowns
-        function setupToggle(id, featuresId) {
-            const btn = document.getElementById(id);
-            const content = document.getElementById(featuresId);
-            const icon = btn.querySelector('.toggle-icon');
-            
-            btn.addEventListener('click', () => {
-                const isOpen = content.classList.contains('show');
-                content.classList.toggle('show');
-                icon.style.transform = isOpen ? 'rotate(0deg)' : 'rotate(180deg)';
+        // Feature Toggles
+        function setupToggle(buttonId, listId) {
+            document.getElementById(buttonId).addEventListener('click', function() {
+                const list = document.getElementById(listId);
+                this.classList.toggle('active');
+                list.classList.toggle('show');
+                const icon = this.querySelector('.toggle-icon');
+                icon.style.transform = list.classList.contains('show') ? 'rotate(180deg)' : 'rotate(0deg)';
             });
         }
 
         setupToggle('humour-toggle', 'humour-features');
         setupToggle('chat-toggle', 'chat-features');
         setupToggle('spamdex-toggle', 'spamdex-features');
+
+        // Scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            header.style.background = window.scrollY > 50 ? 'rgba(255, 255, 255, 0.95)' : 'var(--primary)';
+        });
     </script>
 </body>
 </html>
