@@ -26,11 +26,36 @@ html {
 
 body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-    background-color: var(--primary);
+    background-color: #f8fafc;
     color: var(--text);
     line-height: 1.7;
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
+    position: relative;
+}
+
+/* ===== 🌟 GRADIENT BLUR BACKGROUND EFFECT ===== */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(circle at 10% 20%, rgba(200, 180, 255, 0.25) 0%, transparent 50%),
+        radial-gradient(circle at 90% 70%, rgba(160, 210, 255, 0.30) 0%, transparent 50%),
+        radial-gradient(circle at 30% 90%, rgba(255, 200, 230, 0.20) 0%, transparent 40%),
+        radial-gradient(circle at 70% 10%, rgba(180, 235, 255, 0.20) 0%, transparent 40%);
+    filter: blur(80px);
+    z-index: -1;
+    pointer-events: none;
+}
+
+/* Slight enhancement for the hero area to catch the glow */
+.hero {
+    position: relative;
+    z-index: 1;
 }
 
 .container {
@@ -42,6 +67,24 @@ body {
 
 section {
     padding: 100px 0;
+    position: relative;
+    z-index: 2;
+    background: rgba(255, 255, 255, 0.70);
+    backdrop-filter: blur(2px);
+    margin: 0 0 20px 0;
+}
+
+/* Make the hero background slightly transparent to show the blur more */
+.hero {
+    background: rgba(250, 251, 255, 0.60);
+    backdrop-filter: blur(4px);
+}
+
+/* Keep card backgrounds solid for readability */
+.feature-card, .mission-card, .team-card, .testimonial-card {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
 }
 
 /* ===== TYPOGRAPHY ===== */
@@ -123,14 +166,14 @@ p {
     box-shadow: 0 6px 20px rgba(74, 0, 224, 0.25);
 }
 
-/* ===== HEADER — FIXED (top: 0; left: 0;) ===== */
+/* ===== HEADER — FIXED ===== */
 header {
-    background: rgba(255, 255, 255, 0.85);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    background: rgba(255, 255, 255, 0.80);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
     position: fixed;
-    top: 0;          /* ✅ FIX: sticks to the very top */
-    left: 0;         /* ✅ FIX: aligns to the left edge */
+    top: 0;
+    left: 0;
     width: 100%;
     z-index: 1000;
     border-bottom: 1px solid rgba(0,0,0,0.04);
@@ -212,9 +255,8 @@ header {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(145deg, #fafbff 0%, #f0f3ff 100%);
     text-align: center;
-    margin-top: 30px; /* keeps content below fixed header */
+    margin-top: 30px;
 }
 
 .hero .container {
@@ -257,7 +299,7 @@ header {
 
 /* ===== ABOUT ===== */
 .about {
-    background: var(--secondary);
+    background: rgba(248, 249, 250, 0.80);
 }
 
 .about-content {
@@ -280,7 +322,7 @@ header {
 
 /* ===== MISSION ===== */
 .mission {
-    background: var(--primary);
+    background: rgba(255, 255, 255, 0.70);
 }
 
 .mission-grid {
@@ -290,12 +332,13 @@ header {
 }
 
 .mission-card {
-    background: var(--secondary);
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(4px);
     padding: 32px 24px;
     border-radius: var(--radius);
     text-align: center;
     transition: all 0.3s ease;
-    border: 1px solid var(--border);
+    border: 1px solid rgba(255, 255, 255, 0.6);
 }
 
 .mission-card:hover {
@@ -324,7 +367,7 @@ header {
 
 /* ===== FEATURES ===== */
 .features {
-    background: var(--secondary);
+    background: rgba(248, 249, 250, 0.80);
 }
 
 .features-grid {
@@ -334,12 +377,13 @@ header {
 }
 
 .feature-card {
-    background: var(--primary);
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(4px);
     padding: 30px;
     border-radius: var(--radius);
     transition: all 0.3s ease;
     box-shadow: var(--shadow);
-    border: 1px solid var(--border);
+    border: 1px solid rgba(255, 255, 255, 0.5);
 }
 
 .feature-card:hover {
@@ -363,7 +407,7 @@ header {
 
 /* ===== TEAM ===== */
 .team {
-    background: var(--primary);
+    background: rgba(255, 255, 255, 0.70);
 }
 
 .team-grid {
@@ -376,12 +420,13 @@ header {
 }
 
 .team-card {
-    background: var(--secondary);
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(4px);
     padding: 35px 25px;
     border-radius: var(--radius);
     transition: all 0.3s ease;
     box-shadow: var(--shadow);
-    border: 1px solid var(--border);
+    border: 1px solid rgba(255, 255, 255, 0.5);
     text-align: center;
     height: 100%;
 }
@@ -444,7 +489,7 @@ header {
 
 /* ===== TESTIMONIALS ===== */
 .testimonials {
-    background: var(--secondary);
+    background: rgba(248, 249, 250, 0.80);
 }
 
 .testimonial-grid {
@@ -454,11 +499,12 @@ header {
 }
 
 .testimonial-card {
-    background: var(--primary);
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(4px);
     padding: 30px 28px;
     border-radius: var(--radius);
     box-shadow: var(--shadow);
-    border: 1px solid var(--border);
+    border: 1px solid rgba(255, 255, 255, 0.5);
     transition: all 0.3s ease;
     position: relative;
 }
@@ -602,7 +648,8 @@ footer {
         left: -100%;
         width: 100%;
         height: calc(100vh - 70px);
-        background: var(--primary);
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(12px);
         flex-direction: column;
         align-items: center;
         justify-content: flex-start;
@@ -622,12 +669,13 @@ footer {
     .footer-content { flex-direction: column; gap: 30px; }
     .footer-links { flex-direction: column; gap: 30px; }
     .mission-grid { grid-template-columns: 1fr; }
+    section { padding: 70px 0; }
 }
 
 @media (max-width: 576px) {
     h1 { font-size: 2rem; }
     h2 { font-size: 1.8rem; }
-    section { padding: 70px 0; }
+    section { padding: 60px 0; }
     .btn { padding: 12px 24px; font-size: 0.9rem; }
     .team-card { padding: 25px 18px; }
     .testimonial-card { padding: 24px 20px; }
