@@ -314,6 +314,7 @@ header {
 }
 
 .nav-links .btn {
+    color: white !important;
     padding: 10px 24px;
     font-size: 0.9rem;
 }
