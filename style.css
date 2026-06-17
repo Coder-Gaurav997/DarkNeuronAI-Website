@@ -359,6 +359,18 @@ header {
     color: white;
     transform: translateY(-5px);
 }
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+}
+
+.team-card:last-child {
+    grid-column: 1 / -1;
+    justify-self: center;
+    max-width: 450px;
+    width: 100%;
+}
 
 /* Footer */
 footer {
