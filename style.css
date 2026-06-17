@@ -26,36 +26,125 @@ html {
 
 body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-    background-color: #f8fafc;
+    background-color: #f0f2f8;
     color: var(--text);
     line-height: 1.7;
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
     position: relative;
+    min-height: 100vh;
 }
 
 /* ===== 🌟 GRADIENT BLUR BACKGROUND EFFECT ===== */
 body::before {
     content: '';
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    top: -200px;
+    left: -200px;
+    width: calc(100% + 400px);
+    height: calc(100% + 400px);
     background: 
-        radial-gradient(circle at 10% 20%, rgba(200, 180, 255, 0.25) 0%, transparent 50%),
-        radial-gradient(circle at 90% 70%, rgba(160, 210, 255, 0.30) 0%, transparent 50%),
-        radial-gradient(circle at 30% 90%, rgba(255, 200, 230, 0.20) 0%, transparent 40%),
-        radial-gradient(circle at 70% 10%, rgba(180, 235, 255, 0.20) 0%, transparent 40%);
-    filter: blur(80px);
-    z-index: -1;
+        radial-gradient(ellipse at 15% 25%, rgba(180, 160, 255, 0.30) 0%, transparent 55%),
+        radial-gradient(ellipse at 85% 70%, rgba(140, 210, 255, 0.28) 0%, transparent 55%),
+        radial-gradient(ellipse at 30% 90%, rgba(255, 200, 230, 0.22) 0%, transparent 45%),
+        radial-gradient(ellipse at 75% 15%, rgba(170, 235, 255, 0.20) 0%, transparent 45%);
+    filter: blur(90px);
+    z-index: 0;
     pointer-events: none;
+    animation: subtleGlow 12s ease-in-out infinite alternate;
 }
 
-/* Slight enhancement for the hero area to catch the glow */
-.hero {
+@keyframes subtleGlow {
+    0% {
+        background: 
+            radial-gradient(ellipse at 15% 25%, rgba(180, 160, 255, 0.30) 0%, transparent 55%),
+            radial-gradient(ellipse at 85% 70%, rgba(140, 210, 255, 0.28) 0%, transparent 55%),
+            radial-gradient(ellipse at 30% 90%, rgba(255, 200, 230, 0.22) 0%, transparent 45%),
+            radial-gradient(ellipse at 75% 15%, rgba(170, 235, 255, 0.20) 0%, transparent 45%);
+    }
+    50% {
+        background: 
+            radial-gradient(ellipse at 20% 30%, rgba(190, 170, 255, 0.32) 0%, transparent 50%),
+            radial-gradient(ellipse at 80% 65%, rgba(150, 220, 255, 0.30) 0%, transparent 50%),
+            radial-gradient(ellipse at 35% 85%, rgba(255, 210, 240, 0.24) 0%, transparent 45%),
+            radial-gradient(ellipse at 70% 20%, rgba(180, 240, 255, 0.22) 0%, transparent 45%);
+    }
+    100% {
+        background: 
+            radial-gradient(ellipse at 10% 20%, rgba(170, 150, 255, 0.28) 0%, transparent 55%),
+            radial-gradient(ellipse at 90% 75%, rgba(130, 200, 255, 0.26) 0%, transparent 55%),
+            radial-gradient(ellipse at 25% 95%, rgba(255, 190, 220, 0.20) 0%, transparent 45%),
+            radial-gradient(ellipse at 80% 10%, rgba(160, 230, 255, 0.18) 0%, transparent 45%);
+    }
+}
+
+/* All content sits above the blur background */
+header, section, footer {
     position: relative;
     z-index: 1;
+}
+
+/* Make sections slightly transparent to show the glow */
+section {
+    padding: 100px 0;
+    background: rgba(255, 255, 255, 0.65);
+    backdrop-filter: blur(2px);
+    margin-bottom: 16px;
+    border-radius: 0;
+}
+
+/* Hero with more transparency to let the glow shine */
+.hero {
+    background: rgba(250, 251, 255, 0.50);
+    backdrop-filter: blur(4px);
+    min-height: calc(100vh - 30px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 0;
+}
+
+/* Card backgrounds with subtle transparency */
+.feature-card,
+.mission-card,
+.team-card,
+.testimonial-card {
+    background: rgba(255, 255, 255, 0.82);
+    backdrop-filter: blur(6px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04);
+}
+
+/* About section */
+.about {
+    background: rgba(248, 249, 250, 0.70);
+    backdrop-filter: blur(2px);
+}
+
+/* Features section */
+.features {
+    background: rgba(248, 249, 250, 0.70);
+    backdrop-filter: blur(2px);
+}
+
+/* Mission section */
+.mission {
+    background: rgba(255, 255, 255, 0.60);
+    backdrop-filter: blur(2px);
+}
+
+/* Team section */
+.team {
+    background: rgba(255, 255, 255, 0.60);
+    backdrop-filter: blur(2px);
+}
+
+/* Testimonials section */
+.testimonials {
+    background: rgba(248, 249, 250, 0.70);
+    backdrop-filter: blur(2px);
 }
 
 .container {
@@ -63,28 +152,6 @@ body::before {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
-}
-
-section {
-    padding: 100px 0;
-    position: relative;
-    z-index: 2;
-    background: rgba(255, 255, 255, 0.70);
-    backdrop-filter: blur(2px);
-    margin: 0 0 20px 0;
-}
-
-/* Make the hero background slightly transparent to show the blur more */
-.hero {
-    background: rgba(250, 251, 255, 0.60);
-    backdrop-filter: blur(4px);
-}
-
-/* Keep card backgrounds solid for readability */
-.feature-card, .mission-card, .team-card, .testimonial-card {
-    background: rgba(255, 255, 255, 0.85);
-    backdrop-filter: blur(4px);
-    border: 1px solid rgba(255, 255, 255, 0.5);
 }
 
 /* ===== TYPOGRAPHY ===== */
@@ -153,7 +220,8 @@ p {
 }
 
 .btn-outline {
-    background: transparent;
+    background: rgba(255, 255, 255, 0.70);
+    backdrop-filter: blur(4px);
     border: 2px solid var(--accent);
     color: var(--accent);
     box-shadow: none;
@@ -168,7 +236,7 @@ p {
 
 /* ===== HEADER — FIXED ===== */
 header {
-    background: rgba(255, 255, 255, 0.80);
+    background: rgba(255, 255, 255, 0.78);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
     position: fixed;
@@ -250,15 +318,6 @@ header {
 }
 
 /* ===== HERO ===== */
-.hero {
-    min-height: calc(100vh - 30px);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    margin-top: 30px;
-}
-
 .hero .container {
     display: flex;
     align-items: center;
@@ -298,10 +357,6 @@ header {
 }
 
 /* ===== ABOUT ===== */
-.about {
-    background: rgba(248, 249, 250, 0.80);
-}
-
 .about-content {
     display: flex;
     align-items: center;
@@ -321,10 +376,6 @@ header {
 }
 
 /* ===== MISSION ===== */
-.mission {
-    background: rgba(255, 255, 255, 0.70);
-}
-
 .mission-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -332,13 +383,10 @@ header {
 }
 
 .mission-card {
-    background: rgba(255, 255, 255, 0.85);
-    backdrop-filter: blur(4px);
     padding: 32px 24px;
     border-radius: var(--radius);
     text-align: center;
     transition: all 0.3s ease;
-    border: 1px solid rgba(255, 255, 255, 0.6);
 }
 
 .mission-card:hover {
@@ -366,10 +414,6 @@ header {
 }
 
 /* ===== FEATURES ===== */
-.features {
-    background: rgba(248, 249, 250, 0.80);
-}
-
 .features-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -377,13 +421,10 @@ header {
 }
 
 .feature-card {
-    background: rgba(255, 255, 255, 0.85);
-    backdrop-filter: blur(4px);
     padding: 30px;
     border-radius: var(--radius);
     transition: all 0.3s ease;
     box-shadow: var(--shadow);
-    border: 1px solid rgba(255, 255, 255, 0.5);
 }
 
 .feature-card:hover {
@@ -406,10 +447,6 @@ header {
 }
 
 /* ===== TEAM ===== */
-.team {
-    background: rgba(255, 255, 255, 0.70);
-}
-
 .team-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -420,13 +457,9 @@ header {
 }
 
 .team-card {
-    background: rgba(255, 255, 255, 0.85);
-    backdrop-filter: blur(4px);
     padding: 35px 25px;
     border-radius: var(--radius);
     transition: all 0.3s ease;
-    box-shadow: var(--shadow);
-    border: 1px solid rgba(255, 255, 255, 0.5);
     text-align: center;
     height: 100%;
 }
@@ -473,7 +506,7 @@ header {
     justify-content: center;
     width: 40px;
     height: 40px;
-    background: var(--primary);
+    background: rgba(255, 255, 255, 0.8);
     color: var(--text);
     border-radius: 50%;
     transition: all 0.25s ease;
@@ -488,10 +521,6 @@ header {
 }
 
 /* ===== TESTIMONIALS ===== */
-.testimonials {
-    background: rgba(248, 249, 250, 0.80);
-}
-
 .testimonial-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -499,12 +528,9 @@ header {
 }
 
 .testimonial-card {
-    background: rgba(255, 255, 255, 0.85);
-    backdrop-filter: blur(4px);
     padding: 30px 28px;
     border-radius: var(--radius);
     box-shadow: var(--shadow);
-    border: 1px solid rgba(255, 255, 255, 0.5);
     transition: all 0.3s ease;
     position: relative;
 }
@@ -549,6 +575,8 @@ footer {
     background: var(--text);
     color: #e2e8f0;
     padding: 50px 0 20px;
+    margin-bottom: 0;
+    border-radius: 0;
 }
 
 .footer-content {
