@@ -259,19 +259,26 @@ header {
     align-items: center;
 }
 
+/* ✅ UPDATED: Logo image now displays favicon cleanly */
 .logo-img {
     width: 46px;
     height: 46px;
-    background: linear-gradient(135deg, var(--accent), var(--accent-light));
     border-radius: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     margin-right: 12px;
-    color: white;
-    font-weight: 700;
-    font-size: 1.1rem;
-    font-family: 'Poppins', sans-serif;
+    object-fit: contain;
+    background: linear-gradient(135deg, var(--accent), var(--accent-light));
+    padding: 6px; /* gives a nice inner spacing around the icon */
+}
+
+/* Footer logo variant - matches header */
+.footer-logo .logo-img {
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+    margin-right: 10px;
+    object-fit: contain;
+    background: linear-gradient(135deg, #2d3b52, #1a2332);
+    padding: 5px;
 }
 
 .logo h1 {
@@ -590,12 +597,6 @@ footer {
     display: flex;
     align-items: center;
     margin-bottom: 16px;
-}
-
-.footer-logo .logo-img {
-    width: 40px;
-    height: 40px;
-    margin-right: 10px;
 }
 
 .footer-logo h2 {
