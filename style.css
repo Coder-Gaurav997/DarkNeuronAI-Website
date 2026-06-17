@@ -290,25 +290,27 @@ header {
 
 .team-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 40px;
-    max-width: 900px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    max-width: 1400px;
     margin: 0 auto;
+    align-items: stretch;
 }
 
 .team-card {
     background: var(--secondary);
-    padding: 40px 30px;
+    padding: 35px 25px;
     border-radius: 10px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
     border: 1px solid var(--border);
     text-align: center;
+    height: 100%;
 }
 
 .team-card:hover {
     transform: translateY(-10px);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
 }
 
 .team-icon {
@@ -351,25 +353,13 @@ header {
     color: var(--text);
     border-radius: 50%;
     transition: all 0.3s ease;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
 .team-social a:hover {
     background: var(--accent);
     color: white;
     transform: translateY(-5px);
-}
-.team-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 30px;
-}
-
-.team-card:last-child {
-    grid-column: 1 / -1;
-    justify-self: center;
-    max-width: 450px;
-    width: 100%;
 }
 
 /* Footer */
