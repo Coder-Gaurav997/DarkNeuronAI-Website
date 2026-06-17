@@ -123,12 +123,14 @@ p {
     box-shadow: 0 6px 20px rgba(74, 0, 224, 0.25);
 }
 
-/* ===== HEADER ===== */
+/* ===== HEADER — FIXED (top: 0; left: 0;) ===== */
 header {
     background: rgba(255, 255, 255, 0.85);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     position: fixed;
+    top: 0;          /* ✅ FIX: sticks to the very top */
+    left: 0;         /* ✅ FIX: aligns to the left edge */
     width: 100%;
     z-index: 1000;
     border-bottom: 1px solid rgba(0,0,0,0.04);
@@ -212,7 +214,7 @@ header {
     justify-content: center;
     background: linear-gradient(145deg, #fafbff 0%, #f0f3ff 100%);
     text-align: center;
-    margin-top: 30px;
+    margin-top: 30px; /* keeps content below fixed header */
 }
 
 .hero .container {
@@ -276,7 +278,7 @@ header {
     box-shadow: var(--shadow);
 }
 
-/* ===== MISSION (NEW) ===== */
+/* ===== MISSION ===== */
 .mission {
     background: var(--primary);
 }
@@ -440,7 +442,7 @@ header {
     transform: translateY(-4px);
 }
 
-/* ===== TESTIMONIALS (NEW) ===== */
+/* ===== TESTIMONIALS ===== */
 .testimonials {
     background: var(--secondary);
 }
