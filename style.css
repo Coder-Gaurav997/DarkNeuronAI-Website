@@ -164,7 +164,7 @@ h1, h2, h3, h4 {
 
 h1 {
     font-size: 3.8rem;
-    font-weight: 800;
+    font-weight: 700; /* slightly reduced from 800 */
 }
 
 h2 {
@@ -340,11 +340,16 @@ header {
 }
 
 .hero h1 {
-    background: linear-gradient(135deg, var(--text) 0%, var(--accent) 80%);
+    color: var(--text); /* normal black color */
+    margin-bottom: 20px;
+    font-weight: 700; /* slightly reduced from 800 */
+}
+
+.hero h1 .gradient-text {
+    background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 80%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    margin-bottom: 20px;
 }
 
 .hero p {
