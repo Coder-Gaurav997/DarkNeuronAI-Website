@@ -89,6 +89,57 @@
         </div>
     </section>
 
+    <!-- ============================================================
+         NEW SECTION: FLAGSHIP PRODUCT — DarkNeuronAI's SCOUT
+         (Sits directly after the hero / four buttons)
+         ============================================================ -->
+    <section class="scout" id="scout">
+        <div class="container">
+            <div class="scout-box">
+
+                <div class="scout-badge">
+                    <i class="fas fa-bolt"></i> Our New Flagship Product
+                </div>
+
+                <h2>DarkNeuronAI's <span class="gradient-text">Scout</span></h2>
+                <p class="scout-tagline">Autonomous Research &amp; Report Generation AI Agent</p>
+
+                <p class="scout-desc">
+                    Scout is an autonomous AI agent that researches the web for you — scanning trusted sources,
+                    finding the most relevant content, and turning it into a clean, structured report in minutes.
+                    No endless tabs, no copy-paste, no manual digging. You ask, Scout delivers.
+                </p>
+
+                <div class="scout-points">
+                    <div class="scout-point">
+                        <i class="fas fa-globe"></i>
+                        <span>Autonomous web research</span>
+                    </div>
+                    <div class="scout-point">
+                        <i class="fas fa-filter"></i>
+                        <span>Finds the most relevant content</span>
+                    </div>
+                    <div class="scout-point">
+                        <i class="fas fa-file-lines"></i>
+                        <span>Structured, ready-to-use reports</span>
+                    </div>
+                    <div class="scout-point">
+                        <i class="fas fa-gauge-high"></i>
+                        <span>Results in minutes, not hours</span>
+                    </div>
+                </div>
+
+                <div class="scout-btns">
+                    <!-- URL intentionally left empty — will be injected from JS variable -->
+                    <a href="#" id="scoutLink" class="btn scout-btn" data-scout-url="">
+                        Explore Scout <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
     <section class="about" id="about">
         <div class="container">
             <h2>Who We Are</h2>
@@ -315,6 +366,53 @@
             </div>
         </div>
     </footer>
+
+    <!-- ============================================================
+         NEW: SCOUT ANNOUNCEMENT POPUP
+         Appears on first visit, blurs the page behind it.
+         Close button (X) OR backdrop click dismisses it.
+         ============================================================ -->
+    <div class="scout-popup-overlay" id="scoutPopup" role="dialog" aria-modal="true" aria-labelledby="scoutPopupTitle">
+        <div class="scout-popup">
+
+            <button class="scout-popup-close" id="scoutPopupClose" aria-label="Close popup">
+                <i class="fas fa-times"></i>
+            </button>
+
+            <div class="scout-popup-badge">
+                <i class="fas fa-bolt"></i> New Flagship Product
+            </div>
+
+            <div class="scout-popup-icon">
+                <i class="fas fa-satellite-dish"></i>
+            </div>
+
+            <h2 id="scoutPopupTitle">DarkNeuronAI's <span class="gradient-text">Scout</span></h2>
+            <p class="scout-popup-sub">Autonomous Research &amp; Report Generation AI Agent</p>
+
+            <p class="scout-popup-text">
+                Scout automatically researches the web, finds the best and most relevant content,
+                and turns it into a structured, ready-to-use report — in minutes.
+            </p>
+
+            <ul class="scout-popup-list">
+                <li><i class="fas fa-check"></i> Autonomous web research</li>
+                <li><i class="fas fa-check"></i> Smart relevance filtering</li>
+                <li><i class="fas fa-check"></i> Structured report output</li>
+            </ul>
+
+            <div class="scout-popup-btns">
+                <!-- URL intentionally left empty — will be injected from JS variable -->
+                <a href="#" id="scoutPopupLink" class="btn scout-btn" data-scout-url="">
+                    Visit Scout <i class="fas fa-arrow-right"></i>
+                </a>
+                <button type="button" class="btn btn-outline" id="scoutPopupLater">
+                    Maybe Later
+                </button>
+            </div>
+
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>
