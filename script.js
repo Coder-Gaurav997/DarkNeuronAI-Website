@@ -3,7 +3,7 @@
 // ============================================================
 // Set your Scout URL here when it's ready.
 // Leave it empty ("") to keep the buttons inactive for now.
-const SCOUT_URL = ""; // <-- ADD YOUR SCOUT URL HERE LATER
+const SCOUT_URL = "https://darkneuronai-scout.onrender.com"; // <-- ADD YOUR SCOUT URL HERE LATER
 
 
 // ============================================================
