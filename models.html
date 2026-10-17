@@ -4,369 +4,306 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Our AI Models | DarkNeuronAI</title>
+    <meta name="description" content="Explore DarkNeuronAI's model lineup — Humour LLM, Chat, Spamdex, and HydraSense — built for real-world performance.">
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
+
     <style>
-        /* Additional styles for models page */
-        .models-hero {
-            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
-            color: white;
-            padding: 150px 0 100px;
-            text-align: center;
-        }
-        
-        .models-hero h1 {
-            color: white;
-            font-size: 3.5rem;
-            margin-bottom: 20px;
-        }
-        
-        .models-hero p {
-            color: white;
-            font-size: 1.2rem;
-            max-width: 700px;
-            margin: 0 auto 30px;
-        }
-        
-        .models-section {
-            padding: 80px 0;
-            background: var(--secondary);
-        }
-        
+        /* ===== Models page specific styles ===== */
+        .models-hero { padding-bottom: 40px; }
+        .models-hero .btn i { margin-right: 8px; }
+        .models-section { padding: 60px 0 100px; }
+
         .model-card {
-            background: var(--primary);
-            border-radius: 10px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(6px);
+            border: var(--glass-border);
+            border-radius: var(--radius);
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
-            max-width: 800px;
-            margin: 0 auto 40px;
+            box-shadow: 0 4px 24px rgba(0,0,0,.04);
+            transition: all .3s ease;
+            max-width: 900px;
+            margin: 0 auto 32px;
         }
-        
         .model-card:hover {
-            transform: translateY(-10px);
+            transform: translateY(-6px);
+            box-shadow: 0 20px 40px rgba(74,0,224,.10);
         }
-        
+
         .model-header {
-            background: linear-gradient(to right, var(--accent), var(--accent-light));
-            color: white;
-            padding: 20px;
+            background: var(--gradient);
+            color: #fff;
+            padding: 22px 28px;
         }
-        
-        .model-name {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 5px;
-        }
-        
-        .model-version {
-            font-size: 0.9rem;
-            opacity: 0.8;
-        }
-        
-        .model-content {
-            padding: 25px;
-        }
-        
-        .model-description {
-            margin-bottom: 20px;
-            color: var(--text-light);
-        }
-        
+        .model-name { font-size: 1.5rem; font-weight: 700; margin-bottom: 4px; }
+        .model-version { font-size: .9rem; opacity: .85; }
+
+        .model-content { padding: 28px; }
+        .model-description { color: var(--text-light); margin-bottom: 20px; }
+
         .features-toggle {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            background: var(--secondary);
-            border: 1px solid var(--border);
-            padding: 12px 15px;
-            border-radius: 5px;
+            background: rgba(74,0,224,.06);
+            border: 1px solid rgba(74,0,224,.15);
+            padding: 12px 16px;
+            border-radius: 10px;
             cursor: pointer;
             margin-bottom: 20px;
-            transition: all 0.3s ease;
+            transition: all .25s ease;
+            user-select: none;
         }
-        
-        .features-toggle:hover {
-            background: #f0f0f0;
-        }
-        
-        .features-toggle h4 {
-            margin: 0;
-            font-size: 1.1rem;
-            color: var(--accent);
-        }
-        
-        .toggle-icon {
-            transition: transform 0.3s ease;
-        }
-        
-        .features-toggle.active .toggle-icon {
-            transform: rotate(180deg);
-        }
-        
+        .features-toggle:hover { background: rgba(74,0,224,.10); }
+        .features-toggle h4 { font-size: 1rem; color: var(--accent); margin: 0; }
+        .toggle-icon { transition: transform .3s ease; color: var(--accent); }
+        .features-toggle.active .toggle-icon { transform: rotate(180deg); }
+
         .model-features {
             list-style: none;
-            margin-bottom: 25px;
+            margin: 0;
             max-height: 0;
             overflow: hidden;
-            transition: max-height 0.5s ease;
+            transition: max-height .5s ease, margin-bottom .5s ease;
         }
-        
-        .model-features.show {
-            max-height: 500px;
-        }
-        
+        .model-features.show { max-height: 600px; margin-bottom: 24px; }
         .model-features li {
-            margin-bottom: 10px;
             position: relative;
-            padding-left: 25px;
+            padding-left: 26px;
+            margin-bottom: 10px;
+            color: var(--text-light);
+            font-size: .98rem;
         }
-        
-        .model-features li:before {
+        .model-features li::before {
             content: '✓';
             position: absolute;
             left: 0;
             color: var(--accent);
-            font-weight: bold;
+            font-weight: 700;
         }
-        
-        .model-actions {
-            display: flex;
-            gap: 10px;
-        }
-        
+
+        .model-actions { display: flex; gap: 12px; }
         .model-btn {
             flex: 1;
             text-align: center;
-            padding: 10px 15px;
-            background: var(--secondary);
+            padding: 12px 16px;
+            background: rgba(255,255,255,.7);
             color: var(--accent);
-            border: 1px solid var(--border);
-            border-radius: 5px;
+            border: 1.5px solid var(--accent);
+            border-radius: 50px;
             text-decoration: none;
             font-weight: 600;
-            transition: all 0.3s ease;
+            font-size: .95rem;
+            transition: all .3s ease;
         }
-        
         .model-btn.primary {
-            background: var(--accent);
-            color: white;
+            background: var(--gradient);
+            color: #fff;
+            border-color: transparent;
+            box-shadow: 0 6px 20px rgba(74,0,224,.25);
         }
-        
         .model-btn:hover {
-            background: var(--accent-light);
-            color: white;
             transform: translateY(-2px);
+            box-shadow: 0 10px 24px rgba(74,0,224,.30);
         }
-        
+        .model-btn:not(.primary):hover { background: var(--accent); color: #fff; }
+
         .coming-soon {
             text-align: center;
-            margin-top: 60px;
-            padding: 30px;
-            background: var(--primary);
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            padding: 40px 30px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(6px);
+            border: var(--glass-border);
+            border-radius: var(--radius);
+            box-shadow: 0 4px 24px rgba(0,0,0,.04);
         }
-        
-        .coming-soon h3 {
-            color: var(--accent);
-            margin-bottom: 10px;
-        }
-        
-        .back-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            margin-top: 30px;
-            color: white;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            border: 2px solid white;
-            padding: 10px 20px;
-            border-radius: 30px;
-        }
-        
-        .back-btn:hover {
-            gap: 12px;
-            background: rgba(255, 255, 255, 0.1);
-        }
-        
+        .coming-soon h3 { color: var(--accent); margin-bottom: 10px; font-size: 1.4rem; }
+        .coming-soon p { color: var(--text-light); margin-bottom: 8px; }
+        .coming-soon p:last-child { margin-bottom: 0; }
+        .coming-soon a { color: var(--accent); font-weight: 600; }
+
         @media (max-width: 768px) {
-            .models-hero h1 {
-                font-size: 2.5rem;
-            }
-            
-            .model-actions {
-                flex-direction: column;
-            }
+            .models-hero { padding-bottom: 20px; }
+            .model-actions { flex-direction: column; }
+            .model-content { padding: 22px; }
+            .model-header { padding: 18px 22px; }
         }
     </style>
 </head>
 <body>
-    <!-- Header Section -->
+
+    <!-- Header -->
     <header>
         <div class="container">
             <nav class="navbar">
                 <div class="logo">
-                    <!-- ✅ REPLACED "DN" TEXT WITH FAVICON IMAGE -->
-                    <img src="/favicon.ico" alt="DarkNeuronAI" class="logo-img">
+                    <img src="/favicon.ico" alt="DarkNeuronAI logo" class="logo-img">
                     <h1>Dark<span>Neuron</span>AI</h1>
                 </div>
                 <ul class="nav-links">
                     <li><a href="index.html">Home</a></li>
                     <li><a href="index.html#about">About</a></li>
+                    <li><a href="index.html#mission">Mission</a></li>
                     <li><a href="index.html#features">Features</a></li>
                     <li><a href="index.html#owner">Team</a></li>
-                    <li><a href="models.html" class="btn">Our Models</a></li>
+                    <li><a href="index.html#testimonials">Testimonials</a></li>
+                    <li><a href="models.html" class="btn">Our Models →</a></li>
                 </ul>
-                <div class="hamburger">
+                <div class="hamburger" role="button" tabindex="0" aria-label="Toggle navigation">
                     <i class="fas fa-bars"></i>
                 </div>
             </nav>
         </div>
     </header>
 
-    <!-- Models Hero Section -->
-    <section class="models-hero">
+    <!-- Hero -->
+    <section class="hero models-hero">
         <div class="container">
-            <h1>Our AI Models</h1>
-            <p>Explore our cutting-edge AI models designed to solve complex problems and deliver exceptional performance across various domains.</p>
-            <a href="index.html" class="back-btn">
-                <i class="fas fa-arrow-left"></i> Back to Home
-            </a>
+            <div class="hero-content">
+                <h1>Our <span class="gradient-text">AI Models</span></h1>
+                <p>Explore our cutting-edge AI models — engineered to solve complex problems and deliver exceptional performance across domains.</p>
+                <div class="hero-btns">
+                    <a href="index.html" class="btn">
+                        <i class="fas fa-arrow-left"></i> Back to Home
+                    </a>
+                </div>
+            </div>
         </div>
     </section>
 
     <!-- Models Section -->
-    <section class="models-section">
+    <section class="models-section" id="models">
         <div class="container">
             <h2>Available Models</h2>
-            
-            <!-- DarkNeuron Humour LLM Model -->
+
+            <!-- Humour LLM -->
             <div class="model-card">
                 <div class="model-header">
                     <div class="model-name">DarkNeuron Humour LLM</div>
                     <div class="model-version">Version 1.1</div>
                 </div>
                 <div class="model-content">
-                    <p class="model-description">A specialized language model designed for witty, engaging, and high-quality humorous response generation. Perfect for chatbots, entertainment, and creative writing.</p>
-                    
-                    <div class="features-toggle" id="humour-toggle">
+                    <p class="model-description">A specialised language model built for witty, engaging, and high-quality humorous generation. Ideal for chatbots, entertainment, and creative writing.</p>
+
+                    <div class="features-toggle">
                         <h4>View Features</h4>
                         <i class="fas fa-chevron-down toggle-icon"></i>
                     </div>
-                    
-                    <ul class="model-features" id="humour-features">
+
+                    <ul class="model-features">
                         <li>Fast and efficient 0.5B parameter model</li>
-                        <li>Fine-tuned on high-quality OpenAssistant dataset</li>
-                        <li>Specialized in humor, sarcasm, and witty responses</li>
-                        <li>Low latency response generation for real-time applications</li>
-                        <li>Nuanced understanding of cultural references and wordplay</li>
-                        <li>Excellent for chatbots, education, and creative writing</li>
-                        <li>Multi-turn conversation capability with context retention</li>
+                        <li>Fine-tuned on high-quality OpenAssistant data</li>
+                        <li>Specialised in humour, sarcasm, and witty responses</li>
+                        <li>Low-latency generation for real-time applications</li>
+                        <li>Nuanced grasp of cultural references and wordplay</li>
+                        <li>Great for chatbots, education, and creative writing</li>
+                        <li>Multi-turn conversation with context retention</li>
                     </ul>
-                    
+
                     <div class="model-actions">
-                        <a href="https://huggingface.co/DarkNeuronAI/dnai-humour-0.5B-instruct" target="_blank" class="model-btn primary">Try Demo</a>
-                        <a href="https://github.com/DarkNeuron-AI/dnai-humour-0.5B-instruct" target="_blank" class="model-btn">See Code</a>
+                        <a href="https://huggingface.co/DarkNeuronAI/dnai-humour-0.5B-instruct" target="_blank" rel="noopener" class="model-btn primary">Try Demo</a>
+                        <a href="https://github.com/DarkNeuron-AI/dnai-humour-0.5B-instruct" target="_blank" rel="noopener" class="model-btn">See Code</a>
                     </div>
                 </div>
             </div>
-            
-            <!-- DarkNeuron Chat Model -->
+
+            <!-- Chat -->
             <div class="model-card">
                 <div class="model-header">
                     <div class="model-name">DarkNeuron Chat</div>
                     <div class="model-version">Version 1.1</div>
                 </div>
                 <div class="model-content">
-                    <p class="model-description">Advanced conversational AI model with human-like response generation and contextual understanding.</p>
-                    
-                    <div class="features-toggle" id="chat-toggle">
+                    <p class="model-description">Advanced conversational AI with human-like response generation and strong contextual understanding.</p>
+
+                    <div class="features-toggle">
                         <h4>View Features</h4>
                         <i class="fas fa-chevron-down toggle-icon"></i>
                     </div>
-                    
-                    <ul class="model-features" id="chat-features">
-                        <li>Advanced GPT-2 fine-tuning for natural conversations</li>
-                        <li>Trained on large corpus of diverse text data</li>
+
+                    <ul class="model-features">
+                        <li>Advanced GPT-2 fine-tuning for natural conversation</li>
+                        <li>Trained on a large, diverse text corpus</li>
                         <li>Fast response generation with low latency</li>
                         <li>Contextual understanding across multiple turns</li>
-                        <li>Customizable personality and response styles</li>
+                        <li>Customisable personality and response styles</li>
                         <li>Supports multiple languages and domains</li>
                     </ul>
-                    
+
                     <div class="model-actions">
-                        <a href="https://huggingface.co/DarkNeuronAI/darkneuron-chat-v1.1" target="_blank" class="model-btn primary">Try Demo</a>
-                        <a href="https://github.com/DarkNeuron-AI/darkneuron-chat-v1.1" target="_blank" class="model-btn">See Code</a>
+                        <a href="https://huggingface.co/DarkNeuronAI/darkneuron-chat-v1.1" target="_blank" rel="noopener" class="model-btn primary">Try Demo</a>
+                        <a href="https://github.com/DarkNeuron-AI/darkneuron-chat-v1.1" target="_blank" rel="noopener" class="model-btn">See Code</a>
                     </div>
                 </div>
             </div>
-            
-            <!-- Spamdex Model -->
+
+            <!-- Spamdex -->
             <div class="model-card">
                 <div class="model-header">
                     <div class="model-name">DarkNeuron Spamdex</div>
                     <div class="model-version">Version 1.0</div>
                 </div>
                 <div class="model-content">
-                    <p class="model-description">Advanced spam detection model with industry-leading accuracy and real-time processing capabilities.</p>
-                    
-                    <div class="features-toggle" id="spamdex-toggle">
+                    <p class="model-description">High-accuracy spam detection with real-time processing — built for scale and adaptability.</p>
+
+                    <div class="features-toggle">
                         <h4>View Features</h4>
                         <i class="fas fa-chevron-down toggle-icon"></i>
                     </div>
-                    
-                    <ul class="model-features" id="spamdex-features">
+
+                    <ul class="model-features">
                         <li>99.7% accuracy in spam detection</li>
                         <li>Real-time processing with minimal latency</li>
-                        <li>Adaptive learning to counter evolving spam tactics</li>
+                        <li>Adaptive learning against evolving spam tactics</li>
                         <li>Multilingual support for global deployment</li>
-                        <li>Customizable sensitivity settings</li>
+                        <li>Customisable sensitivity settings</li>
                     </ul>
-                    
+
                     <div class="model-actions">
-                        <a href="https://huggingface.co/DarkNeuronAI/darkneuron-spamdex-v1" target="_blank" class="model-btn primary">Try Demo</a>
-                        <a href="https://github.com/DarkNeuron-AI/darkneuron-spamdex-v1" target="_blank" class="model-btn">See Code</a>
+                        <a href="https://huggingface.co/DarkNeuronAI/darkneuron-spamdex-v1" target="_blank" rel="noopener" class="model-btn primary">Try Demo</a>
+                        <a href="https://github.com/DarkNeuron-AI/darkneuron-spamdex-v1" target="_blank" rel="noopener" class="model-btn">See Code</a>
                     </div>
                 </div>
             </div>
-            
-            <!-- HydraSense Model -->
+
+            <!-- HydraSense -->
             <div class="model-card">
                 <div class="model-header">
                     <div class="model-name">DarkNeuron HydraSense</div>
                     <div class="model-version">Version 1.0</div>
                 </div>
                 <div class="model-content">
-                    <p class="model-description">Advance AI model for comprehensive water potability classification as 0 or 1.</p>
-                    
-                    <div class="features-toggle" id="hydrasense-toggle">
+                    <p class="model-description">Advanced AI model for comprehensive water potability classification — deployable in real-world monitoring systems.</p>
+
+                    <div class="features-toggle">
                         <h4>View Features</h4>
                         <i class="fas fa-chevron-down toggle-icon"></i>
                     </div>
-                    
-                    <ul class="model-features" id="hydrasense-features">
-                        <li>Multi-featured AI model for water potability</li>
-                        <li>Real-time water potability detection with 76.5% accuracy</li>
-                        <li>Very fast and efficient, runs easily on standard PCs</li>
-                        <li>Can be used with reallife applications</li>
+
+                    <ul class="model-features">
+                        <li>Multi-feature model for water potability prediction</li>
+                        <li>Real-time detection with 76.5% accuracy</li>
+                        <li>Runs efficiently on standard hardware</li>
+                        <li>Ready for real-world deployment</li>
                         <li>Complete pipeline for automated scaling</li>
                     </ul>
-                    
+
                     <div class="model-actions">
-                        <a href="https://huggingface.co/DarkNeuronAI/darkneuron-hydrasense-v1" target="_blank" class="model-btn primary">Try Demo</a>
-                        <a href="https://github.com/DarkNeuron-AI/darkneuron-hydrasense-v1" target="_blank" class="model-btn">See Code</a>
+                        <a href="https://huggingface.co/DarkNeuronAI/darkneuron-hydrasense-v1" target="_blank" rel="noopener" class="model-btn primary">Try Demo</a>
+                        <a href="https://github.com/DarkNeuron-AI/darkneuron-hydrasense-v1" target="_blank" rel="noopener" class="model-btn">See Code</a>
                     </div>
                 </div>
             </div>
-            
+
+            <!-- Coming Soon -->
             <div class="coming-soon">
                 <h3>More Models Coming Soon</h3>
-                <p>We're continuously developing new AI models to address emerging challenges and opportunities.</p>
-                <p>Stay tuned for updates on our latest releases!</p>
+                <p>We're constantly building new AI systems to tackle emerging challenges.</p>
+                <p>Follow our progress on <a href="https://github.com/DarkNeuron-AI" target="_blank" rel="noopener">GitHub</a> and <a href="https://huggingface.co/DarkNeuronAI" target="_blank" rel="noopener">Hugging Face</a>.</p>
             </div>
         </div>
     </section>
@@ -377,27 +314,28 @@
             <div class="footer-content">
                 <div>
                     <div class="footer-logo">
-                        <!-- ✅ REPLACED "DN" TEXT WITH FAVICON IMAGE IN FOOTER -->
-                        <img src="/favicon.ico" alt="DarkNeuronAI" class="logo-img">
+                        <img src="/favicon.ico" alt="DarkNeuronAI logo" class="logo-img">
                         <h2>DarkNeuronAI</h2>
                     </div>
-                    <p>Advanced AI Solutions for Tomorrow's Challenges</p>
+                    <p>Intelligent Solutions for Tomorrow's World</p>
                 </div>
+
                 <div class="footer-links">
                     <div class="footer-nav">
-                        <h3>Navigation</h3>
+                        <h3>Quick Links</h3>
                         <ul>
-                            <li><a href="#home">Home</a></li>
-                            <li><a href="#about">About</a></li>
-                            <li><a href="#mission">Mission</a></li>
-                            <li><a href="#features">Features</a></li>
-                            <li><a href="#owner">Team</a></li>
-                            <li><a href="#testimonials">Testimonials</a></li>
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="index.html#about">About</a></li>
+                            <li><a href="index.html#mission">Mission</a></li>
+                            <li><a href="index.html#features">Features</a></li>
+                            <li><a href="index.html#owner">Team</a></li>
+                            <li><a href="index.html#testimonials">Testimonials</a></li>
                             <li><a href="models.html">Our Models</a></li>
                         </ul>
                     </div>
+
                     <div class="footer-contact">
-                        <h3>Contact</h3>
+                        <h3>Get in Touch</h3>
                         <ul>
                             <li><i class="fas fa-envelope"></i> darkneuronai.official@gmail.com</li>
                             <li><i class="fab fa-github"></i> github.com/DarkNeuronAI</li>
@@ -405,78 +343,33 @@
                             <li><i class="fas fa-robot"></i> huggingface.co/DarkNeuronAI</li>
                         </ul>
                     </div>
+
                     <div class="footer-services">
-                        <h3>Services</h3>
+                        <h3>What We Offer</h3>
                         <ul>
-                            <li><a href="#">AI Consulting</a></li>
-                            <li><a href="#">Custom Solutions</a></li>
-                            <li><a href="#">AI Integration</a></li>
-                            <li><a href="#">Training & Support</a></li>
+                            <li><a href="#">AI Strategy &amp; Consulting</a></li>
+                            <li><a href="#">Custom Model Development</a></li>
+                            <li><a href="#">Seamless AI Integration</a></li>
+                            <li><a href="#">Training &amp; Ongoing Support</a></li>
                         </ul>
                     </div>
                 </div>
             </div>
+
             <div class="copyright">
                 <p>&copy; 2026 DarkNeuronAI. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
+    <!-- Shared JS (nav, smooth scroll, header) + page-specific feature toggles -->
+    <script src="script.js"></script>
     <script>
-        // Mobile Navigation Toggle
-        const hamburger = document.querySelector('.hamburger');
-        const navLinks = document.querySelector('.nav-links');
-
-        hamburger.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-            hamburger.querySelector('i').classList.toggle('fa-bars');
-            hamburger.querySelector('i').classList.toggle('fa-times');
-        });
-
-        // Close mobile menu when clicking on a link
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.classList.remove('active');
-                hamburger.querySelector('i').classList.add('fa-bars');
-                hamburger.querySelector('i').classList.remove('fa-times');
+        document.querySelectorAll('.features-toggle').forEach(toggle => {
+            toggle.addEventListener('click', () => {
+                toggle.classList.toggle('active');
+                toggle.nextElementSibling?.classList.toggle('show');
             });
-        });
-
-        // Features dropdown functionality
-        document.getElementById('humour-toggle').addEventListener('click', function() {
-            const features = document.getElementById('humour-features');
-            this.classList.toggle('active');
-            features.classList.toggle('show');
-        });
-
-        document.getElementById('chat-toggle').addEventListener('click', function() {
-            const features = document.getElementById('chat-features');
-            this.classList.toggle('active');
-            features.classList.toggle('show');
-        });
-
-        document.getElementById('spamdex-toggle').addEventListener('click', function() {
-            const features = document.getElementById('spamdex-features');
-            this.classList.toggle('active');
-            features.classList.toggle('show');
-        });
-
-        document.getElementById('hydrasense-toggle').addEventListener('click', function() {
-            const features = document.getElementById('hydrasense-features');
-            this.classList.toggle('active');
-            features.classList.toggle('show');
-        });
-
-        // Header background change on scroll
-        window.addEventListener('scroll', () => {
-            const header = document.querySelector('header');
-            if(window.scrollY > 100) {
-                header.style.background = 'rgba(255, 255, 255, 0.95)';
-                header.style.backdropFilter = 'blur(10px)';
-            } else {
-                header.style.background = 'var(--primary)';
-                header.style.backdropFilter = 'none';
-            }
         });
     </script>
 </body>
